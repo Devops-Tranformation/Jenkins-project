@@ -1,0 +1,27 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                dir('HelloWorld.java') {
+                    sh 'javac HelloWorld.java'
+                }
+            }
+        }
+
+        stage('Run') {
+            steps {
+                dir('HelloWorld.java') {
+                    sh 'java HelloWorld'
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            echo 'Pipeline completed.'
+        }
+    }
+}
