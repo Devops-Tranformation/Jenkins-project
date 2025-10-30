@@ -11,6 +11,7 @@ pipeline {
         stage('Build') {
             steps {
                 dir('HelloWorld.java') {
+                    echo 'Compiling Java program...'
                     sh 'javac HelloWorld.java'
                 }
             }
@@ -19,6 +20,7 @@ pipeline {
         stage('Run') {
             steps {
                 dir('HelloWorld.java') {
+                    echo 'Running Java program...'
                     sh 'java HelloWorld'
                 }
             }
