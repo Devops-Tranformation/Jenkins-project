@@ -2,17 +2,28 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Checkout') {
             steps {
-                echo 'Compiling Java program...'
-                sh 'javac HelloWorld.java'
+                checkout scm
             }
         }
+
+        stage('Build') {
+            steps {
+                sh 'javac src/HelloWorld.java'
+            }
+        }
+
         stage('Run') {
             steps {
-                echo 'Running Java program...'
-                sh 'java HelloWorld'
+                sh 'java -cp src HelloWorld'
             }
+        }
+    }
+
+    post {
+        always {
+            echo 'Pipeline completed.'
         }
     }
 }
