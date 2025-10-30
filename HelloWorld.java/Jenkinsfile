@@ -10,13 +10,17 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'javac src/HelloWorld.java'
+                dir('HelloWorld.java') {
+                    sh 'javac HelloWorld.java'
+                }
             }
         }
 
         stage('Run') {
             steps {
-                sh 'java -cp src HelloWorld'
+                dir('HelloWorld.java') {
+                    sh 'java HelloWorld'
+                }
             }
         }
     }
