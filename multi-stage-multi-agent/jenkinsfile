@@ -1,24 +1,21 @@
 pipeline {
     agent any
-
     stages {
         stage('Build') {
             steps {
-                dir('HelloWorld.java') {
+                dir('multi-stage-multi-agent') {
                     sh 'javac HelloWorld.java'
                 }
             }
         }
-
         stage('Run') {
             steps {
-                dir('HelloWorld.java') {
+                dir('multi-stage-multi-agent') {
                     sh 'java HelloWorld'
                 }
             }
         }
     }
-
     post {
         always {
             echo 'Pipeline completed.'
