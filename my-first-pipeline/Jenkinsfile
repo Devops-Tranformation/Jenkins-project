@@ -5,7 +5,17 @@ pipeline {
   stages {
     stage('Test') {
       steps {
+        echo 'Checking Node version...'
         sh 'node --version'
+      }
+    }
+
+    stage('Build') {
+      steps {
+        echo 'Running a sample build step...'
+        // Normally you’d do "npm install && npm run build"
+        // But for demo, we’ll just print a message
+        sh 'echo "Simulating frontend build process..."'
       }
     }
   }
